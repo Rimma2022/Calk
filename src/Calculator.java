@@ -72,6 +72,23 @@ public class Calculator {
                 System.out.println(listString.get(i+1));
             }
         }
+        while(listString.contains("*")){
+            for (int i = 0; i < listString.size(); i++) {
+                if (listString.get(i).equals("*")){
+                    int index1 = i;
+                    double a = Double.parseDouble(listString.get(index1-1));
+                    System.out.println(a);
+                    double b = Double.parseDouble(listString.get(index1+1));
+                    System.out.println(b);
+                    double result = Double.parseDouble(listString.get(index1-1)) * Double.parseDouble(listString.get(index1+1));
+                    String resultString = Double.toString(result);
+                    listString.remove(index1-1);
+                    listString.remove(index1);
+                    listString.remove(index1-1);
+                    listString.add(index1-1, resultString);
+                }
+            }
+        }
 
     }
 

@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Calculator {
     public static List<String> listString = new LinkedList<>();
-
     public static List<String> createList(String str) {
         String operand = new String();
         str = str.trim().replaceAll("\\s", "");
@@ -49,7 +48,6 @@ public class Calculator {
                     System.out.println(result);
                 }
                 listString.removeAll(listString);
-
                 int index = (str.indexOf("(") -1);
                 if(num1 == 0 && result < 0){
                     str = stringBuilder.insert(num1, "-").toString();
@@ -61,7 +59,6 @@ public class Calculator {
                     stringBuilder.delete(index, index).setCharAt(index, '+');
                     str = stringBuilder.toString();
                     result = Math.abs(result);
-
                 } else if (str.charAt(num1-1) == '+' && result < 0){
                     stringBuilder.delete(index, index+1);
                     str = stringBuilder.toString();
@@ -69,7 +66,7 @@ public class Calculator {
                 substr = str.substring(str.indexOf("("), str.indexOf(")") + 1);
                 str = str.replace(substr, Double.toString(result));
                 listString = createList(str);
-                System.out.println(listString.get(i+1));
+
             }
         }
         while(listString.contains("*")){
@@ -135,10 +132,26 @@ public class Calculator {
                 }
             }
         }
-
+        while(listString.contains("+")){
+            for (int i = 0; i < listString.size(); i++) {
+                if (listString.get(i).equals("+")){
+                    int index1 = i;
+                    double a = Double.parseDouble(listString.get(index1-1));
+                    System.out.println("мое" + a);
+                    double b = Double.parseDouble(listString.get(index1+1));
+                    System.out.println(b);
+                    double result = Double.parseDouble(listString.get(index1-1)) + Double.parseDouble(listString.get(index1+1));
+                    String resultString = Double.toString(result);
+                    listString.remove(index1-1);
+                    listString.remove(index1);
+                    listString.remove(index1-1);
+                    listString.add(index1-1, resultString);
+                    break;
+                }
+            }
+        }
+        String strlist =listString.toString();
+        System.out.println("Результат: "+strlist);
     }
 
 }
-
-
-

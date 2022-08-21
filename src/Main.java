@@ -37,7 +37,7 @@ public class Main {
                                 break;
                             }
                         }
-//                        Calculator.Calculate(str);
+                        Calculator.Calculate(str);
                         break;
                     }
                     default: {

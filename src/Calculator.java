@@ -106,6 +106,35 @@ public class Calculator {
                 }
             }
         }
+        while(listString.contains("-") ){
+            for (int i = 0; i < listString.size(); i++) {
+                int index1 = 0;
+                if (listString.get(i).equals("-") && i != 0){
+                    index1 = i;
+                    double a = Double.parseDouble(listString.get(index1-1));
+                    System.out.println(a);
+                    double b = Double.parseDouble(listString.get(index1+1));
+                    System.out.println(b);
+                    double result = a - b;
+                    String resultString = Double.toString(result);
+                    listString.remove(index1-1);
+                    listString.remove(index1);
+                    listString.remove(index1-1);
+                    listString.add(index1-1, resultString);
+                    System.out.println(listString);
+                    break;
+                } else if (listString.get(i).equals("-") && i == 0){
+                    double a = 0;
+                    double b = Double.parseDouble(listString.get(1));
+                    double result = a - b;
+                    String resultString = Double.toString(result);
+                    listString.remove(0);
+                    listString.remove(0);
+                    listString.add(0, resultString);
+                    System.out.println(listString);
+                }
+            }
+        }
 
     }
 
